@@ -17,17 +17,21 @@
         <h3 class = "text-white p-10 ">Here is your tasks</h3>
     <div class = "task p-10 flex gap-3 flex-wrap" >
         <%if(files.length > 0){ %>
-            <% files.forEach((val) =>{ %>
+            <% files.forEach((filename) =>{ %>
         <div class = "task rounded w-72 px-5 py-4 bg-zinc-800">
-        <h1 class=" text-white tracking-tighter "><%= val %></h1>
-        <a href = "/file/<%= val %> " class = "text-sm text-blue-600 " >read more</a>    
+        <h1 class=" text-white tracking-tighter "><%= filename %></h1>
+         
+        <a href="/files/<%= filename %> " class=" text-white tracking-tighter">see details</a>
+      
+          
         </div> 
         <% }) %>
+         
         <% } else { %>
             <h3 class = "text-white px-5 py-4 bg-zinc-800 rounded ">no tasks</h3>
         <%}%>
-       
-    </div>    
+        </div> 
+    </div> 
     </div>
     </div>
 

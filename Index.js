@@ -9,9 +9,10 @@ app.use(express.static(path.join(__dirname ,"public")));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-    fs.readdir(`./files`,(err,files)=>{
+    fs.readdir(`./files`,(err,files )=>{
     res.render("index", {files:files});
-    });   
+    });  
+
 });
 
 app.post("/create", (req, res) => {
@@ -20,14 +21,23 @@ app.post("/create", (req, res) => {
     });
     });
 
-app.get('/file/:filename', (req, res) => {    
-    fs.readFile(`./files/${req.params.filename}`, "utf-8", (err,filedata)=>{
-        res.render("show" ,{filename: req.params.filename , filedata: filedata }); 
-    })
-})
+app.get('/files/:filename', (req, res) => {    
+        fs.readFile(`./files/${req.params.filename}`, "utf-8" ,(err,filedata)=>{
+        
+            res.render("Show", {
+                    filename:req.params.filename,
+                    filedata:filedata,
+                   });
+        })
+    }); 
 
-
-
+app.post("/delete", (req, res) => {
+    fs.unlink(`./files/${req.body.filename}`, (err) => {
+        res.redirect("/");
+    });
+    });
+    
+    
 
 
 app.listen(3000, () => {
