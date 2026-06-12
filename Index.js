@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
+const noteModel = require('./models/task')
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extends: true}));
 app.use(express.static(path.join(__dirname ,"public")));
 app.set("view engine", "ejs");
 
@@ -21,12 +22,16 @@ app.post("/create", (req, res) => {
     });
     });
 
-app.get('/files/:filename', (req, res) => {    
+app.get('/files/:filename', async (req, res) => {   
+
+    let readUser = await noteModel.find();
+        
         fs.readFile(`./files/${req.params.filename}`, "utf-8" ,(err,filedata)=>{
         
             res.render("Show", {
                     filename:req.params.filename,
                     filedata:filedata,
+                    readUser
                    });
         })
     }); 
