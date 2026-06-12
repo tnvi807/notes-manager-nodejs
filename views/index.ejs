@@ -11,17 +11,18 @@
     <div class = "Forms p-10 text-white ">
         <form action = "/create" method = "post" >
             <input class = "block px-5 py-2 w-full rounded bg-zinc-800"  type="text" placeholder="Title goes here" name = "title">
-            <textarea class = "block px-5 py-2 mt-2 w-full rounded resize-none bg-zinc-800 " placeholder="write your text in detail" name = "details"></textarea>
+            <input class = "block px-5 py-2 mt-2 w-full rounded resize-none bg-zinc-800 " type="text" placeholder="write your text in detail" name = "details">
             <input class= "mt-2 bg-blue-600 px-5 py-2 rounded " type = "submit" value = "create task ">
         </div>
         <h3 class = "text-white p-10 ">Here is your tasks</h3>
     <div class = "task p-10 flex gap-3 flex-wrap" >
-        <%if(files.length > 0){ %>
-            <% files.forEach((filename) =>{ %>
+        <%if(title.length > 0){ %>
+            <% title.forEach((name) =>{ %>
         <div class = "task rounded w-72 px-5 py-4 bg-zinc-800">
-        <h1 class=" text-white tracking-tighter "><%= filename %></h1>
-         
-        <a href="/files/<%= filename %> " class=" text-white tracking-tighter">see details</a>
+        <h1 class=" text-white tracking-tighter "><%= name.title %></h1>
+        <h2 class=" text-white tracking-tighter "><%= name.detalis %></h2>
+
+        <a href="/read/<%= name.title %> " class=" text-white tracking-tighter ">see details</a>
       
           
         </div> 

@@ -11,11 +11,10 @@
         <div>
         <a href = "/" class = "text-sm text-blue-600 mb-5 inline-block">go back</a>
       
-        <h1 class = " text-white text-3xl "><%= filename%></h1>
-        <P class = " text-white mt-2" ><%= filedata %> </P>
+        <h1 class = " text-white text-3xl  " name="title"><%= title.title%></h1>
+        <P class = " text-white mt-2" name="details" ><%= title.details %> </P>
             <div >
-                <form action = "/delete" method = "post">    
-        <input type="hidden" name="filename" value="<%= filename %>">
+                <form action = "/delete/<%= title.id%>" method = "post">   
         <button
         class="mt-2 bg-red-500 px-5 py-2 rounded text-white"
         type="submit">
