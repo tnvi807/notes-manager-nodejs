@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class = "main w-full min-h-screen bg-zinc-900 p-10">
+        <div >
+        <a href = "/" class = "text-sm text-blue-600 mb-5 inline-block">go back</a>
+        </div>
+        <form action="/update/<%= title._id%>" method="POST" >
+        <input class = " text-white text-3xl mt-2 w-full text-2xl" value = "<%= title.title %>" type="text" name = "title">
+        <input class = " text-white text-3xl mt-2 w-full text-xl" value = "<%= title.details %>" type="text" name = "details">
+        <input class="mt-20 bg-yellow-500 px-5 py-1 rounded text-white" type="submit" value="update task">
+        
+        </form>
+        
+    </div>    
+</div>   
+</body>
+</html>
